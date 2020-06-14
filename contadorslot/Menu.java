@@ -74,6 +74,7 @@ public class Menu extends javax.swing.JFrame {
         Iniciar = new javax.swing.JButton();
         Guardar = new javax.swing.JButton();
         Terminar = new javax.swing.JButton();
+        Cargar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Contador Slot");
@@ -86,6 +87,11 @@ public class Menu extends javax.swing.JFrame {
         });
 
         Ayuda.setText("Ayuda");
+        Ayuda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AyudaActionPerformed(evt);
+            }
+        });
 
         Modificar.setText("Modificar");
         Modificar.setVisible(false);
@@ -210,6 +216,13 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
+        Cargar.setText("Cargar resultado de una carrera");
+        Cargar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CargarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -241,7 +254,9 @@ public class Menu extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(Modificar)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(Ayuda))
+                                .addComponent(Ayuda)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(Cargar))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(Iniciar)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -258,7 +273,8 @@ public class Menu extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Modo)
                     .addComponent(Ayuda)
-                    .addComponent(Modificar))
+                    .addComponent(Modificar)
+                    .addComponent(Cargar))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 368, Short.MAX_VALUE)
@@ -326,8 +342,14 @@ public class Menu extends javax.swing.JFrame {
                 Iniciar.setVisible(true);
                 Pausar.setVisible(false);
                 Modificar.setVisible(true);
+                Cargar.setVisible(false);
                 nPis=JOptionPane.showOptionDialog(null, "Numero de pistas\n", "Pistas", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, nPistas,nPistas[0]);
                 switch(nPis){
+                    case -1:
+                        Iniciar.setVisible(false);
+                        Modificar.setVisible(false);
+                        Cargar.setVisible(true);
+                        break;
                     case 0:
                         pilot1=JOptionPane.showInputDialog("Nombre piloto1");
                         Pista1.setVisible(true);
@@ -467,6 +489,8 @@ public class Menu extends javax.swing.JFrame {
                 Iniciar.setVisible(false);
                 Pausar.setVisible(false);
                 Modificar.setVisible(false);
+                Cargar.setVisible(false);
+                Terminar.setVisible(true);
                 Pista1.setText("");
                 Pista2.setText("");
                 Pista3.setText("");
@@ -1313,7 +1337,7 @@ public class Menu extends javax.swing.JFrame {
             case 0:
         {
             try {
-               String nombreCarrera=JOptionPane.showInputDialog(null,"Como se llama la carrera?");
+                String nombreCarrera=JOptionPane.showInputDialog(null,"Como se llama la carrera?");
                 FileOutputStream pdf = new FileOutputStream(nombreCarrera+".pdf");
                 Document datos=new Document();
                 PdfWriter.getInstance(datos, pdf);
@@ -1464,6 +1488,7 @@ public class Menu extends javax.swing.JFrame {
         Pista7.setVisible(false);
         Pista8.setVisible(false);
         Guardar.setVisible(false);
+        Cargar.setVisible(true);
         vueltasP1=0;
         vueltasP2=0;
         vueltasP3=0;
@@ -1500,7 +1525,69 @@ public class Menu extends javax.swing.JFrame {
         tVueltas[7]=0;
         mod=0;
         nPis=0;
+        Terminar.setVisible(false);
     }//GEN-LAST:event_TerminarActionPerformed
+
+    private void AyudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AyudaActionPerformed
+       JOptionPane.showMessageDialog(null,"El manual no esta disponible en la version beta.\nDisculpe las molestias.");
+    }//GEN-LAST:event_AyudaActionPerformed
+
+    private void CargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CargarActionPerformed
+        BaseDeDatos bd=new BaseDeDatos();
+        String nombreCarrera=JOptionPane.showInputDialog(null,"Nombre de la carrera a ver");
+        String [] results;
+        results=bd.verResultado(nombreCarrera);
+        if(!results[0].equals("")){
+            Pista1.setVisible(true);
+            Pista1.setText(results[0]);
+        }else{
+            Pista1.setVisible(false);
+        }
+        if(!results[1].equals("")){
+            Pista2.setVisible(true);
+            Pista2.setText(results[1]);
+        }else{
+            Pista2.setVisible(false);
+        }
+        if(!results[2].equals("")){
+            Pista3.setVisible(true);
+            Pista3.setText(results[2]);
+        }else{
+            Pista3.setVisible(false);
+        }
+        if(!results[3].equals("")){
+            Pista4.setVisible(true);
+            Pista4.setText(results[3]);
+        }else{
+            Pista4.setVisible(false);
+        }
+        if(!results[4].equals("")){
+            Pista5.setVisible(true);
+            Pista5.setText(results[4]);
+        }else{
+            Pista5.setVisible(false);
+        }
+        if(!results[5].equals("")){
+            Pista6.setVisible(true);
+            Pista6.setText(results[5]);
+        }else{
+            Pista6.setVisible(false);
+        }
+        if(!results[6].equals("")){
+            Pista7.setVisible(true);
+            Pista7.setText(results[6]);
+        }else{
+            Pista7.setVisible(false);
+        }
+        if(!results[7].equals("")){
+            Pista8.setVisible(true);
+            Pista8.setText(results[7]);
+        }else{
+            Pista8.setVisible(false);
+        }
+        
+        
+    }//GEN-LAST:event_CargarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1540,6 +1627,7 @@ public class Menu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Ayuda;
+    private javax.swing.JButton Cargar;
     private javax.swing.JButton Guardar;
     private javax.swing.JButton Iniciar;
     private static javax.swing.JButton Modificar;

@@ -71,6 +71,8 @@
                                   <Component id="Modificar" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Component id="Ayuda" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="Cargar" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="Iniciar" min="-2" max="-2" attributes="0"/>
@@ -95,6 +97,7 @@
                       <Component id="Modo" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="Ayuda" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="Modificar" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="Cargar" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -132,6 +135,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Ayuda"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AyudaActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="Modificar">
           <Properties>
@@ -372,6 +378,14 @@
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Terminar.setVisible(false);"/>
           </AuxValues>
+        </Component>
+        <Component class="javax.swing.JButton" name="Cargar">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Cargar resultado de una carrera"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CargarActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

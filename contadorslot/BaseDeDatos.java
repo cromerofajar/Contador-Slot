@@ -4,6 +4,7 @@ package contadorslot;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -53,10 +54,62 @@ public class BaseDeDatos {
             pstmt.setInt(3,vueltas);
             pstmt.setInt(4,posicion);
             pstmt.executeUpdate();
+            conn.close();
             return "Piloto "+nombre+" añadido";
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
         return "Error\nLa pista esta repetida";
     }
+    
+    public static String[] verResultado(String nomCarrera){
+        String piloto;
+        int pista,vueltas,posicion;
+        String sql = "SELECT * FROM "+nomCarrera;
+        String [] results ={"","","","","","","",""};
+        String [] error = {""};
+        try{Connection conn= connect();
+              Statement stmt = conn.createStatement();
+              ResultSet rs = stmt.executeQuery(sql);
+                while (rs.next()) {
+                    piloto = rs.getString("Piloto");
+                    pista = rs.getInt("Pista");
+                    vueltas = rs.getInt("Vueltas");
+                    posicion = rs.getInt("Posicion");
+                    switch(pista){
+                        case 1:
+                            results[0]=piloto+"\nVueltas: "+vueltas+"\nPosición:"+posicion;
+                            break;
+                        case 2:
+                            results[1]=piloto+"\nVueltas: "+vueltas+"\nPosición:"+posicion;
+                            break;
+                        case 3:
+                            results[2]=piloto+"\nVueltas: "+vueltas+"\nPosición:"+posicion;
+                            break;
+                        case 4:
+                            results[3]=piloto+"\nVueltas: "+vueltas+"\nPosición:"+posicion;
+                            break;
+                        case 5:
+                            results[4]=piloto+"\nVueltas: "+vueltas+"\nPosición:"+posicion;
+                            break;
+                        case 6:
+                            results[5]=piloto+"\nVueltas: "+vueltas+"\nPosición:"+posicion;
+                            break;
+                        case 7:
+                            results[6]=piloto+"\nVueltas: "+vueltas+"\nPosición:"+posicion;
+                            break;
+                        case 8:
+                            results[7]=piloto+"\nVueltas: "+vueltas+"\nPosición:"+posicion;
+                            break;
+                    }
+                }
+                conn.close();
+                return results;
+                
+        }catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return error;
+    }
 }
+
