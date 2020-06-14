@@ -75,6 +75,7 @@ public class Menu extends javax.swing.JFrame {
         Guardar = new javax.swing.JButton();
         Terminar = new javax.swing.JButton();
         Cargar = new javax.swing.JButton();
+        GuardarC = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Contador Slot");
@@ -223,6 +224,14 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
+        GuardarC.setVisible(false);
+        GuardarC.setText("Guardar");
+        GuardarC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                GuardarCActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -264,7 +273,9 @@ public class Menu extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(Guardar)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(Terminar)))
+                                .addComponent(Terminar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(GuardarC)))
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -290,7 +301,8 @@ public class Menu extends javax.swing.JFrame {
                     .addComponent(Iniciar)
                     .addComponent(Pausar)
                     .addComponent(Guardar)
-                    .addComponent(Terminar))
+                    .addComponent(Terminar)
+                    .addComponent(GuardarC))
                 .addGap(0, 75, Short.MAX_VALUE))
         );
 
@@ -343,6 +355,7 @@ public class Menu extends javax.swing.JFrame {
                 Pausar.setVisible(false);
                 Modificar.setVisible(true);
                 Cargar.setVisible(false);
+                GuardarC.setVisible(false);
                 nPis=JOptionPane.showOptionDialog(null, "Numero de pistas\n", "Pistas", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, nPistas,nPistas[0]);
                 switch(nPis){
                     case -1:
@@ -491,6 +504,7 @@ public class Menu extends javax.swing.JFrame {
                 Modificar.setVisible(false);
                 Cargar.setVisible(false);
                 Terminar.setVisible(true);
+                GuardarC.setVisible(false);
                 Pista1.setText("");
                 Pista2.setText("");
                 Pista3.setText("");
@@ -1345,15 +1359,15 @@ public class Menu extends javax.swing.JFrame {
                 Paragraph titulo=new Paragraph("Resultado de "+nombreCarrera);
                 titulo.setAlignment(1);
                 datos.add(titulo);
-                datos.add(new Paragraph(""));
+                datos.add(new Paragraph(" "));
                 if(Pista1.getText().equals("")){}
                 else{
                     posicion=Integer.valueOf(JOptionPane.showInputDialog(null,"En que posicion quedo "+nPilot[0]+"?"));
                     datos.add(new Paragraph("Nombre: "+nPilot[0]));
                     datos.add(new Paragraph("Pista: "+1));
                     datos.add(new Paragraph("Vueltas: "+vueltasP1));
-                    datos.add(new Paragraph("Posicion: "+posicion+"\n"));
-                    datos.add(new Paragraph(""));
+                    datos.add(new Paragraph("Posicion: "+posicion));
+                    datos.add(new Paragraph(" "));
                 }
                 if(Pista2.getText().equals("")){}
                 else{
@@ -1361,8 +1375,8 @@ public class Menu extends javax.swing.JFrame {
                     datos.add(new Paragraph("Nombre: "+nPilot[1]));
                     datos.add(new Paragraph("Pista: "+2));
                     datos.add(new Paragraph("Vueltas: "+vueltasP2));
-                    datos.add(new Paragraph("Posicion: "+posicion+"\n"));
-                    datos.add(new Paragraph(""));
+                    datos.add(new Paragraph("Posicion: "+posicion));
+                    datos.add(new Paragraph(" "));
                 }
                 if(Pista3.getText().equals("")){}
                 else{
@@ -1370,8 +1384,8 @@ public class Menu extends javax.swing.JFrame {
                     datos.add(new Paragraph("Nombre: "+nPilot[2]));
                     datos.add(new Paragraph("Pista: "+3));
                     datos.add(new Paragraph("Vueltas: "+vueltasP3));
-                    datos.add(new Paragraph("Posicion: "+posicion+"\n"));
-                    datos.add(new Paragraph(""));
+                    datos.add(new Paragraph("Posicion: "+posicion));
+                    datos.add(new Paragraph(" "));
                 }
                 if(Pista4.getText().equals("")){}
                 else{
@@ -1379,7 +1393,8 @@ public class Menu extends javax.swing.JFrame {
                     datos.add(new Paragraph("Nombre: "+nPilot[3]));
                     datos.add(new Paragraph("Pista: "+4));
                     datos.add(new Paragraph("Vueltas: "+vueltasP4));
-                    datos.add(new Paragraph("Posicion: "+posicion+"\n"));
+                    datos.add(new Paragraph("Posicion: "+posicion));
+                    datos.add(new Paragraph(" "));
                 }
                 if(Pista5.getText().equals("")){}
                 else{
@@ -1387,8 +1402,8 @@ public class Menu extends javax.swing.JFrame {
                     datos.add(new Paragraph("Nombre: "+nPilot[4]));
                     datos.add(new Paragraph("Pista: "+5));
                     datos.add(new Paragraph("Vueltas: "+vueltasP3));
-                    datos.add(new Paragraph("Posicion: "+posicion+"\n"));
-                    datos.add(new Paragraph(""));
+                    datos.add(new Paragraph("Posicion: "+posicion));
+                    datos.add(new Paragraph(" "));
                 }
                 if(Pista6.getText().equals("")){}
                 else{
@@ -1396,8 +1411,8 @@ public class Menu extends javax.swing.JFrame {
                     datos.add(new Paragraph("Nombre: "+nPilot[5]));
                     datos.add(new Paragraph("Pista: "+6));
                     datos.add(new Paragraph("Vueltas: "+vueltasP6));
-                    datos.add(new Paragraph("Posicion: "+posicion+"\n"));
-                    datos.add(new Paragraph(""));
+                    datos.add(new Paragraph("Posicion: "+posicion));
+                    datos.add(new Paragraph(" "));
                 }
                 if(Pista7.getText().equals("")){}
                 else{
@@ -1405,8 +1420,8 @@ public class Menu extends javax.swing.JFrame {
                     datos.add(new Paragraph("Nombre: "+nPilot[6]));
                     datos.add(new Paragraph("Pista: "+7));
                     datos.add(new Paragraph("Vueltas: "+vueltasP6));
-                    datos.add(new Paragraph("Posicion: "+posicion+"\n"));
-                    datos.add(new Paragraph(""));
+                    datos.add(new Paragraph("Posicion: "+posicion));
+                    datos.add(new Paragraph(" "));
                 }
                 if(Pista8.getText().equals("")){}
                 else{
@@ -1414,8 +1429,8 @@ public class Menu extends javax.swing.JFrame {
                     datos.add(new Paragraph("Nombre: "+nPilot[7]));
                     datos.add(new Paragraph("Pista: "+8));
                     datos.add(new Paragraph("Vueltas: "+vueltasP8));
-                    datos.add(new Paragraph("Posicion: "+posicion+"\n"));
-                    datos.add(new Paragraph(""));
+                    datos.add(new Paragraph("Posicion: "+posicion));
+                    datos.add(new Paragraph(" "));
                 }
                 if(datos.isOpen()){
                     datos.close();
@@ -1536,6 +1551,7 @@ public class Menu extends javax.swing.JFrame {
         BaseDeDatos bd=new BaseDeDatos();
         String nombreCarrera=JOptionPane.showInputDialog(null,"Nombre de la carrera a ver");
         String [] results;
+        GuardarC.setVisible(true);
         results=bd.verResultado(nombreCarrera);
         if(!results[0].equals("")){
             Pista1.setVisible(true);
@@ -1589,6 +1605,69 @@ public class Menu extends javax.swing.JFrame {
         
     }//GEN-LAST:event_CargarActionPerformed
 
+    private void GuardarCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GuardarCActionPerformed
+        try {
+                String nombreCarrera=JOptionPane.showInputDialog(null,"Como se llama la carrera?");
+                FileOutputStream pdf = new FileOutputStream(nombreCarrera+".pdf");
+                Document datos=new Document();
+                PdfWriter.getInstance(datos, pdf);
+                datos.open();
+                Paragraph titulo=new Paragraph("Resultado de "+nombreCarrera);
+                titulo.setAlignment(1);
+                datos.add(titulo);
+                datos.add(new Paragraph(" "));
+                if(Pista1.getText().equals("")){}
+                else{
+                    datos.add(new Paragraph(Pista1.getText()));
+                    datos.add(new Paragraph(" "));
+                }
+                if(Pista2.getText().equals("")){}
+                else{
+                    datos.add(new Paragraph(Pista2.getText()));
+                    datos.add(new Paragraph(" "));
+                }
+                if(Pista3.getText().equals("")){}
+                else{
+                    datos.add(new Paragraph(Pista3.getText()));
+                    datos.add(new Paragraph(" "));
+                }
+                if(Pista4.getText().equals("")){}
+                else{
+                    datos.add(new Paragraph(Pista4.getText()));
+                    datos.add(new Paragraph(" "));
+                }
+                if(Pista5.getText().equals("")){}
+                else{
+                    datos.add(new Paragraph(Pista5.getText()));
+                    datos.add(new Paragraph(" "));
+                }
+                if(Pista6.getText().equals("")){}
+                else{
+                    datos.add(new Paragraph(Pista6.getText()));
+                    datos.add(new Paragraph(" "));
+                }
+                if(Pista7.getText().equals("")){}
+                else{
+                    datos.add(new Paragraph(Pista7.getText()));
+                    datos.add(new Paragraph(" "));
+                }
+                if(Pista8.getText().equals("")){}
+                else{
+                    datos.add(new Paragraph(Pista8.getText()));
+                    datos.add(new Paragraph(" "));
+                }
+                if(datos.isOpen()){
+                    datos.close();
+                }
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (DocumentException ex) {
+                Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
+                Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+            }
+    }//GEN-LAST:event_GuardarCActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1629,6 +1708,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JButton Ayuda;
     private javax.swing.JButton Cargar;
     private javax.swing.JButton Guardar;
+    private javax.swing.JButton GuardarC;
     private javax.swing.JButton Iniciar;
     private static javax.swing.JButton Modificar;
     private javax.swing.JButton Modo;

@@ -78,28 +78,28 @@ public class BaseDeDatos {
                     posicion = rs.getInt("Posicion");
                     switch(pista){
                         case 1:
-                            results[0]=piloto+"\nVueltas: "+vueltas+"\nPosición:"+posicion;
+                            results[0]="Nombre: "+piloto+"\nPista: "+pista+"\nVueltas: "+vueltas+"\nPosición:"+posicion;
                             break;
                         case 2:
-                            results[1]=piloto+"\nVueltas: "+vueltas+"\nPosición:"+posicion;
+                            results[1]="Nombre: "+piloto+"\nPista: "+pista+"\nVueltas: "+vueltas+"\nPosición:"+posicion;
                             break;
                         case 3:
-                            results[2]=piloto+"\nVueltas: "+vueltas+"\nPosición:"+posicion;
+                            results[2]="Nombre: "+piloto+"\nPista: "+pista+"\nVueltas: "+vueltas+"\nPosición:"+posicion;
                             break;
                         case 4:
-                            results[3]=piloto+"\nVueltas: "+vueltas+"\nPosición:"+posicion;
+                            results[3]="Nombre: "+piloto+"\nPista: "+pista+"\nVueltas: "+vueltas+"\nPosición:"+posicion;
                             break;
                         case 5:
-                            results[4]=piloto+"\nVueltas: "+vueltas+"\nPosición:"+posicion;
+                            results[4]="Nombre: "+piloto+"\nPista: "+pista+"\nVueltas: "+vueltas+"\nPosición:"+posicion;
                             break;
                         case 6:
-                            results[5]=piloto+"\nVueltas: "+vueltas+"\nPosición:"+posicion;
+                            results[5]="Nombre: "+piloto+"\nPista: "+pista+"\nVueltas: "+vueltas+"\nPosición:"+posicion;
                             break;
                         case 7:
-                            results[6]=piloto+"\nVueltas: "+vueltas+"\nPosición:"+posicion;
+                            results[6]="Nombre: "+piloto+"\nPista: "+pista+"\nVueltas: "+vueltas+"\nPosición:"+posicion;
                             break;
                         case 8:
-                            results[7]=piloto+"\nVueltas: "+vueltas+"\nPosición:"+posicion;
+                            results[7]="Nombre: "+piloto+"\nPista: "+pista+"\nVueltas: "+vueltas+"\nPosición:"+posicion;
                             break;
                     }
                 }
