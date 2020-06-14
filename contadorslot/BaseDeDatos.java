@@ -7,6 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -67,7 +68,7 @@ public class BaseDeDatos {
         int pista,vueltas,posicion;
         String sql = "SELECT * FROM "+nomCarrera;
         String [] results ={"","","","","","","",""};
-        String [] error = {""};
+        String [] error = {"Error"};
         try{Connection conn= connect();
               Statement stmt = conn.createStatement();
               ResultSet rs = stmt.executeQuery(sql);
@@ -107,7 +108,7 @@ public class BaseDeDatos {
                 return results;
                 
         }catch (SQLException e) {
-            System.out.println(e.getMessage());
+            JOptionPane.showMessageDialog(null,"No hay una carrear con ese nombre");
         }
         return error;
     }

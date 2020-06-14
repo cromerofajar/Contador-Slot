@@ -1551,8 +1551,12 @@ public class Menu extends javax.swing.JFrame {
         BaseDeDatos bd=new BaseDeDatos();
         String nombreCarrera=JOptionPane.showInputDialog(null,"Nombre de la carrera a ver");
         String [] results;
-        GuardarC.setVisible(true);
         results=bd.verResultado(nombreCarrera);
+        if(results.length==1 && results[0].equals("Error")){
+            
+        }
+        else{
+        GuardarC.setVisible(true);
         if(!results[0].equals("")){
             Pista1.setVisible(true);
             Pista1.setText(results[0]);
@@ -1601,7 +1605,7 @@ public class Menu extends javax.swing.JFrame {
         }else{
             Pista8.setVisible(false);
         }
-        
+        }
         
     }//GEN-LAST:event_CargarActionPerformed
 
