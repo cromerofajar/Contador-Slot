@@ -25,21 +25,22 @@ public class BaseDeDatos {
         }
         return conn;
     }
-    public static void crearTablas(String nomCarrera) {
+    public static String crearTablas(String nomCarrera) {
 
         String sql = "CREATE TABLE IF NOT EXISTS "+nomCarrera+" (\n"
                 + "	Piloto PRIMARY KEY,\n"
-                + "	Pista number NOT NULL UNIQUE,\n"
+                + "	Pista number NOT NULL,\n"
                 + "	Vueltas number NOT NULL,\n"
                 + "	Posicion number NOT NULL\n"
                 + ");";
-
+        
         try (Connection conn = connect();
                 Statement stmt = conn.createStatement()) {
                 stmt.execute(sql);
                 conn.close();
+                return "Carrera creada en la base de datos.";
         } catch (SQLException e) {
-            System.out.println("Error al crear la tabla");
+            return "Error al crear la carrera";
         }
         
     }

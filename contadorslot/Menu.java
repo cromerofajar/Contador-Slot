@@ -73,6 +73,7 @@ public class Menu extends javax.swing.JFrame {
         Pista8 = new javax.swing.JTextArea();
         Iniciar = new javax.swing.JButton();
         Guardar = new javax.swing.JButton();
+        Terminar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Contador Slot");
@@ -201,6 +202,14 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
+        Terminar.setVisible(false);
+        Terminar.setText("Terminar");
+        Terminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TerminarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -238,7 +247,9 @@ public class Menu extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(Pausar)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(Guardar)))
+                                .addComponent(Guardar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(Terminar)))
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -262,7 +273,8 @@ public class Menu extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Iniciar)
                     .addComponent(Pausar)
-                    .addComponent(Guardar))
+                    .addComponent(Guardar)
+                    .addComponent(Terminar))
                 .addGap(0, 75, Short.MAX_VALUE))
         );
 
@@ -651,6 +663,7 @@ public class Menu extends javax.swing.JFrame {
                         break;
                 }
                 Pausar.setVisible(false);
+                Terminar.setVisible(true);
                 break;
             case 1:
                 Iniciar.setVisible(false);
@@ -971,6 +984,7 @@ public class Menu extends javax.swing.JFrame {
                     }
                     modCarrera=2;
                     Pausar.setVisible(false);
+                    Terminar.setVisible(true);
            }
         }
     }//GEN-LAST:event_Pista1KeyPressed
@@ -1015,6 +1029,7 @@ public class Menu extends javax.swing.JFrame {
                     }
                     modCarrera=2;
                     Pausar.setVisible(false);
+                    Terminar.setVisible(true);
            }
         }
     }//GEN-LAST:event_Pista2KeyPressed
@@ -1059,6 +1074,7 @@ public class Menu extends javax.swing.JFrame {
                     }
                     modCarrera=2;
                     Pausar.setVisible(false);
+                    Terminar.setVisible(true);
            }
         }
     }//GEN-LAST:event_Pista3KeyPressed
@@ -1103,6 +1119,7 @@ public class Menu extends javax.swing.JFrame {
                     }
                     modCarrera=2;
                     Pausar.setVisible(false);
+                    Terminar.setVisible(true);
            }
         }
     }//GEN-LAST:event_Pista4KeyPressed
@@ -1147,6 +1164,7 @@ public class Menu extends javax.swing.JFrame {
                     }
                     modCarrera=2;
                     Pausar.setVisible(false);
+                    Terminar.setVisible(true);
            }
         }
     }//GEN-LAST:event_Pista5KeyPressed
@@ -1191,6 +1209,7 @@ public class Menu extends javax.swing.JFrame {
                     }
                     modCarrera=2;
                     Pausar.setVisible(false);
+                    Terminar.setVisible(true);
            }
         }
     }//GEN-LAST:event_Pista6KeyPressed
@@ -1235,6 +1254,7 @@ public class Menu extends javax.swing.JFrame {
                     }
                     modCarrera=2;
                     Pausar.setVisible(false);
+                    Terminar.setVisible(true);
            }
         }
     }//GEN-LAST:event_Pista7KeyPressed
@@ -1279,6 +1299,7 @@ public class Menu extends javax.swing.JFrame {
                     }
                     modCarrera=2;
                     Pausar.setVisible(false);
+                    Terminar.setVisible(true);
            }
         }
     }//GEN-LAST:event_Pista8KeyPressed
@@ -1388,7 +1409,7 @@ public class Menu extends javax.swing.JFrame {
             case 1:
                 String nombreCarrera=JOptionPane.showInputDialog(null,"Como se llama la carrera?");
                 BaseDeDatos bd=new BaseDeDatos();
-                bd.crearTablas(nombreCarrera);
+                JOptionPane.showMessageDialog(null, bd.crearTablas(nombreCarrera));
                 if(Pista1.getText().equals("")){}
                 else{
                     posicion=Integer.valueOf(JOptionPane.showInputDialog(null,"En que posicion quedo "+nPilot[0]+"?"));
@@ -1432,6 +1453,54 @@ public class Menu extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_GuardarActionPerformed
+
+    private void TerminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TerminarActionPerformed
+        Pista1.setVisible(false);
+        Pista2.setVisible(false);
+        Pista3.setVisible(false);
+        Pista4.setVisible(false);
+        Pista5.setVisible(false);
+        Pista6.setVisible(false);
+        Pista7.setVisible(false);
+        Pista8.setVisible(false);
+        Guardar.setVisible(false);
+        vueltasP1=0;
+        vueltasP2=0;
+        vueltasP3=0;
+        vueltasP4=0;
+        vueltasP5=0;
+        vueltasP6=0;
+        vueltasP7=0;
+        vueltasP8=0;
+        modCarrera=0;
+        vueltasTotal=0;
+        pilot1="";
+        pilot2="";
+        pilot3="";
+        pilot4="";
+        pilot5="";
+        pilot6="";
+        pilot7="";
+        pilot8="";
+        nPilot[0]="";
+        nPilot[1]="";
+        nPilot[2]="";
+        nPilot[3]="";
+        nPilot[4]="";
+        nPilot[5]="";
+        nPilot[6]="";
+        nPilot[7]="";
+        tVueltas[0]=0;
+        tVueltas[1]=0;
+        tVueltas[2]=0;
+        tVueltas[3]=0;
+        tVueltas[4]=0;
+        tVueltas[5]=0;
+        tVueltas[6]=0;
+        tVueltas[7]=0;
+        mod=0;
+        nPis=0;
+    }//GEN-LAST:event_TerminarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1484,6 +1553,7 @@ public class Menu extends javax.swing.JFrame {
     public javax.swing.JTextArea Pista6;
     public javax.swing.JTextArea Pista7;
     public javax.swing.JTextArea Pista8;
+    private javax.swing.JButton Terminar;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
